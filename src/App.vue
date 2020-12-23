@@ -1,5 +1,7 @@
 <template>
-    <Fact v-bind:values="values"/>
+    <div id="app">
+        <Fact v-bind:values="values"/>
+    </div>
 </template>
 
 <script>
@@ -41,15 +43,5 @@ body {
     padding: 0;
     font-family: sans-serif;
     font-size: 18px;
-}
-
-#app {
-    
-    background-color: #eff5f8;
-    border-radius: 20px;
-    box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.5);
-    position: relative;
-    padding: 30px 30px 0;
-    margin: auto;
 }
 </style>
