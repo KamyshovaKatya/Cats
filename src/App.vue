@@ -1,28 +1,55 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <Fact v-bind:values="values"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Fact from './components/Fact.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Fact
+  },
+  data() {
+    return {
+        values: {}
+    }
+  },
+  methods: {
+        getFact(){
+            this.axios.get('http://188.225.47.187/api/cats/random-fact.php')
+                .then((response) => {
+                    this.values = response.data;
+            })
+        }
+  },
+  mounted() {
+    this.getFact();
   }
 }
 </script>
 
 <style>
+body {
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    
+    background-color: #eff5f8;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.5);
+    position: relative;
+    padding: 30px 30px 0;
+    margin: auto;
 }
 </style>
